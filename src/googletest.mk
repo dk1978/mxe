@@ -13,7 +13,7 @@ $(PKG)_DEPS     := cc
 
 define $(PKG)_BUILD
     cd '$(BUILD_DIR)' && '$(TARGET)-cmake' \
-          -DBUILD_GMOCK=off \
+          -DCMAKE_CXX_FLAGS="-Wno-deprecated-copy" \
          '$(SOURCE_DIR)'
     $(MAKE) -C '$(BUILD_DIR)' -j '$(JOBS)'
     $(MAKE) -C '$(BUILD_DIR)' -j 1 install
